@@ -1,0 +1,17 @@
+<h1>Games#new</h1>
+<p>Find me in app/views/games/new.html.erb</p>
+<ul class="list-inline">
+  <% @start_time %>
+<% @letters.each do |letter| %>
+  <li> [ <%= letter[0].upcase %> ] </li>
+  <% end %>
+</ul>
+
+<form action="/score" method="post" class="form-group">
+   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <label class="control-label">What's your best shot ?</label>
+  <input class="form-control" type="hidden" name="letters" value="<%= @letters %>">
+  <input class="form-control" type="hidden" name="start_time" value="<%= @start_time %>">
+  <input class="form-control" type="text" name="attempt">
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
